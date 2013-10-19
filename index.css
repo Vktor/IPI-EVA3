@@ -1,0 +1,24 @@
+div{
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	margin-top: 40px;
+	background-color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	font: bold 12px Helvetica, Arial, sans-serif;
+	border: 1px solid #696969;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+#area{
+	height: 50px;
+	width: 250px;
+}
+body{
+	background-color:  #d3d2d2;
+}
