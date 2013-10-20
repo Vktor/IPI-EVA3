@@ -1,8 +1,7 @@
 <?php
-$conexion = mysql_connect("localhost", "root", "");
-mysql_select_db("ipi-eva3", $conexion);
 
-/*$queEmp = "SELECT * FROM cliente";
+include_once('conexion.php');
+$queEmp = "SELECT * FROM cliente";
 $resEmp = mysql_query($queEmp, $conexion) or die(mysql_error());
 $totEmp = mysql_num_rows($resEmp);
 
@@ -15,5 +14,7 @@ if ($totEmp> 0) {
       echo "Efectivo: ".$rowEmp[4]."<br>";
       
    }
-}*/
+}
+ 
+
 ?>

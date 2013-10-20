@@ -18,47 +18,28 @@ function saludo(){
 $server->register('agregarCliente',array('nombre'=>'xsd:string','departamento'=>'xsd:string','sexo'=>'xsd:string','edad'=>'xsd:int','efectivo'=>'xsd:int'), array('return'=>'xsd:string'), $URL);
 
 function agregarCliente($nombre, $depto, $sex, $edad, $dinero){
-include './conexion.php';
+include ('conexion.php');
+$query="insert into cliente(nombre, departamento, sexo, edad, efectivo) values('".$nombre."','".$departamento."','".$sexo."',".intval($edad).",".intval($efectivo).")";
+$result=mysql_query($query);
+if ($result) {
+	return new soapval('return','xsd:string',"DATOS AGREGADOS EXITOSAMENTE");
+}
+	return new soapval('return','xsd:string',"ERROR AL AGREGAR DATOS");
+}
+//agregando una tercer funcion mostrar todo
+$server->register('MostrarDB',array('consulta'=>'xsd:string'), array('return'=>'xsd:string'), $URL);
+function MostrarDB(){
+include ('conexion.php');
 $link=conectar();
 mysql_select_db("ipi-eva3",$link);
-$query="insert into cliente(nombre, departamento, sexo, edad, efectivo) values('".$nombre."','".$departamento."','".$sexo."','".$edad."','".$efectivo."')";
+$query=" select * from cliente";
 if ($result=mysql_query($query, $link)) {
-	return new soapval('return'.'xsd:string',"DATOS AGREGADOS EXITOSAMENTE");
-}else{
-
-	return new soapval('return'.'xsd:string',"ERROR AL AGREGAR DATOS");
-	}
+	return "Agregados";
 }
-//agregando una tercer funcion buscar por nombre
-$server->register('BuscarPorNombre', array('nombre'=>'xsd:string'), array('return'=>'xsd:string'), $URL);
-function BuscarPorNombre($nombre){
-include './conexion.php';
-$link=conectar();
-mysql_select_db("ipi-eva3",$link);
-$query="Select * from cliente where nombre ='".$nombre."')";
-$result=mysql_query($query, $link);
-while($f=mysql_fetch_row($result)){
-$busca=$f[0];
+	return "No agregados";
 }
 
-while($f=mysql_fetch_row($result)){
-$busca1=$f[1];
-}
 
-while($f=mysql_fetch_row($result)){
-$busca2=$f[2];
-}
-
-while($f=mysql_fetch_row($result)){
-$busca3=$f[3];
-}
-
-while($f=mysql_fetch_row($result)){
-$busca4=$f[4];
-}
-$concatenar=$busca." ".$busca1." ".$busca2." ".$busca3." ".$busca4;
-return new soapval('return','xsd:string', $concatenar);
-}
 if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );
 $server->service($HTTP_RAW_POST_DATA);
 ?>
