@@ -1,16 +1,38 @@
-	function cargarContenido(){
-		var contenedor = document.getElementById('AjaxUser');
+	function nuevoAjax(){
+	var xmlhttp=false;
+ 	try {
+ 		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+ 	} catch (e) {
+ 		try {
+ 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+ 		} catch (E) {
+ 			xmlhttp = false;
+ 		}
+ 	}
+
+	if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+ 		xmlhttp = new XMLHttpRequest();
+	}
+	return xmlhttp;
+}
+
+
+	function Saludo(){
+		
 		ajax=nuevoAjax();
-		ajax.open("GET", "http://localhost/IPI-EVA2/Mostrar.php",true);
-		ajax.onreadystatechange=function() {
-			if (ajax.readyState==4) {
-				contenedor.innerHTML = ajax.responseText
-			}
-		}
-	 	ajax.send(null)
+		
+		ajax.onreadystatechange = function()
+        {
+                if (ajax.readyState = 4)
+                {
+                       document.getElementById("area").innerHTML;=ajax.responseText;
+                }
+        }
+        ajax.open("GET","http://localhost/IPI-EVA3/consumidor.php?area"+id,true);
+	 	ajax.send();
 	}
 
-
+/*
 	function enviarcontenido(nombre, deptop, sexo, edad, dinero){
 		if(window.XMLHttpRequest){
 			var nombre =document.getElementById("nombre").value;
@@ -31,3 +53,5 @@
 		ajax2.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		ajax2.send("&nombre="+nombre, "&depto="+depto, "&sexo="+sexo);
 	}
+	*/
+//window.onload= function(){cargarContenido()}

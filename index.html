@@ -4,22 +4,23 @@
 	<meta charset="UTF-8">
 	<title>Evaluacion 3 de IPI</title>
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<script type="text/javascript" href="AJAX.js"></script>
 </head>
 <body>
 	
 
 	<div id="ACliente">
-		<form>
+		<form action="agregaCliente.php" method="POST">
 			Nombre:<br>
-			<input type="text" placeholder="Ingrese su nombre" id="nombre"><br>
+			<input type="text" placeholder="Ingrese su nombre" name="nombre"><br>
 			Departamento:<br>
-			<input type="text" placeholder="Ingrese su departamento" id="depto"><br>
+			<input type="text" placeholder="Ingrese su departamento" name="depto"><br>
 			Sexo:<br>
-			<input type="text" placeholder="M o F ?" id="sx"><br>
+			<input type="text" placeholder="M o F ?" name="sx"><br>
 			Edad:<br>
-			<input type="text" placeholder="Ingresa tu edad" id="edad"><br>
+			<input type="text" placeholder="Ingresa tu edad" name="edad"><br>
 			Efectivo:<br>
-			<input type="text" placeholder="Efectivo actual" id="dinero"><br>
+			<input type="text" placeholder="Efectivo actual" name="dinero"><br>
 			<input type="submit" value="Enviar" onclick="enviarcontenido();" >
 
 		</form>
@@ -35,7 +36,7 @@
 		<textarea id="area">
 			
 		</textarea><br>
-		<input type="submit" value="Mostrar Saludo del Web Service">
+		<input type="submit" value="Mostrar Saludo del Web Service" id="saludar" onclick=saludo();>
 		</form>
 
 	</div>
