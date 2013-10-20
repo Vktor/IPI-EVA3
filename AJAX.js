@@ -20,15 +20,16 @@
 	function Saludo(){
 		
 		ajax=nuevoAjax();
-		
+		 ajax.open("GET","http://localhost/IPI-EVA3/consumidor.php",true);
 		ajax.onreadystatechange = function()
         {
                 if (ajax.readyState = 4)
                 {
-                       document.getElementById("area").innerHTML;=ajax.responseText;
+                       document.getElementById('area').value=ajax.responseText;
+                       alert('dentro del if');
                 }
         }
-        ajax.open("GET","http://localhost/IPI-EVA3/consumidor.php?area"+id,true);
+       
 	 	ajax.send();
 	}
 
